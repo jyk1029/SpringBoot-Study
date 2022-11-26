@@ -5,7 +5,7 @@ import com.example.board.global.error.exception.ErrorCode;
 
 public class UserAlreadyExitsException extends CustomException {
 
-    public static final UserAlreadyExitsException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new UserAlreadyExitsException();
 
     private UserAlreadyExitsException() {
