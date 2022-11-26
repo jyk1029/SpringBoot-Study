@@ -17,19 +17,19 @@ public class UserSignUpService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    @Transactional
+    @Transactional //클래스나 메서드에 붙여줄 경우, 해당 범위 내 메서드가 트랜잭션(Rollback)이 되도록 보장
     public void execute(SignUpRequest request) {
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
-            throw UserAlreadyExitsException.EXCEPTION;
+        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) { //isPresent : 값 유무 체크
+            throw UserAlreadyExitsException.EXCEPTION; //예외처리
         }
 
-        User user = User.builder()
+        User user = User.builder() //Builder Pattern(Design Pattern) : 복합 객체의 생성 과정과 표현 방법을 분리하여 동일한 생성 절차에서 서로 다른 표현 결과를 만들 수 있게 하는 패턴
                 .accountId(request.getAccountId())
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(passwordEncoder.encode(request.getPassword())) //PasswordEncoder : 비밀번호를 암호화하는 역할(스프링 시큐리티의 인터페이스 객체)
                 .email(request.getEmail())
                 .name(request.getName())
                 .build();
 
-        userRepository.save(user);
+        userRepository.save(user); //UserRepository에 user 값 저장
     }
 }
