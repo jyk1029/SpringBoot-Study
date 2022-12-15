@@ -10,18 +10,23 @@ import jakarta.persistence.Id
 class User(
     id: Long?,
     accountId: String,
-    password: String
+    password: String,
+    name: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = id
         protected set
 
-    @Column(length = 20, nullable = false, unique = true, name = "account_id")
+    @Column(length = 20, nullable = false, unique = true)
     var accountId: String = accountId
         protected set
 
-    @Column(length = 60, nullable = false, name = "password")
+    @Column(length = 60, nullable = false)
     var password: String = password
         protected set
+
+    @Column(length = 4, nullable = false)
+    var name: String = name
+            protected set
 }
