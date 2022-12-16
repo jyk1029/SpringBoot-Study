@@ -15,8 +15,7 @@ class User(
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = id
-        protected set
+    val id: Long? = id
 
     @Column(length = 20, nullable = false, unique = true)
     var accountId: String = accountId
