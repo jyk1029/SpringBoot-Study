@@ -6,7 +6,7 @@ import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDateTime
 
 @MappedSuperclass
-abstract class BaseTimeEntity (
+abstract class BaseTimeEntity(
     createdAt: LocalDateTime
 ) {
     @CreatedDate

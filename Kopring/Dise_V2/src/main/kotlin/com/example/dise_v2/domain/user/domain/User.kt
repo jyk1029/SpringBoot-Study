@@ -27,5 +27,5 @@ class User(
 
     @Column(length = 4, nullable = false)
     var name: String = name
-            protected set
+        protected set
 }
