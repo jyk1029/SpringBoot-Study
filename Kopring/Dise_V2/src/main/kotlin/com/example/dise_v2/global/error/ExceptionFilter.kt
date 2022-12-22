@@ -7,12 +7,15 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.MediaType
 import org.springframework.web.filter.OncePerRequestFilter
+import java.io.IOException
 import java.nio.charset.StandardCharsets
 import kotlin.Throws
 
 class ExceptionFilter(
     private val objectMapper: ObjectMapper
 ) : OncePerRequestFilter() {
+
+    @Throws(IOException::class)
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         try {
             filterChain.doFilter(request, response)
@@ -24,6 +27,7 @@ class ExceptionFilter(
             }
         }
     }
+    @Throws(IOException::class)
     private fun sendErrorMessage(response: HttpServletResponse, e:CustomException) {
 
         var errorResponse: ErrorResponse = ErrorResponse.of(e)
