@@ -30,7 +30,7 @@ class ExceptionFilter(
     @Throws(IOException::class)
     private fun sendErrorMessage(response: HttpServletResponse, e:CustomException) {
 
-        var errorResponse: ErrorResponse = ErrorResponse.of(e)
+        val errorResponse: ErrorResponse = ErrorResponse.of(e)
 
         response.status = errorResponse.status
         response.contentType = MediaType.APPLICATION_JSON_VALUE
