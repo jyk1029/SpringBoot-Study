@@ -6,5 +6,5 @@ enum class ErrorCode(
     val status: Int,
     val message: String
 ) {
-    INTERNAL_SERVER_ERROR(500, "내부 서버 오류");
+    INTERNAL_SERVER_ERROR(500, "내부 서버 오류입니다.");
 }
