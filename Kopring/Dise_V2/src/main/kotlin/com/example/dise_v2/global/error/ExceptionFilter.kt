@@ -29,7 +29,6 @@ class ExceptionFilter(
     }
     @Throws(IOException::class)
     private fun sendErrorMessage(response: HttpServletResponse, e:CustomException) {
-
         val errorResponse: ErrorResponse = ErrorResponse.of(e)
 
         response.status = errorResponse.status
