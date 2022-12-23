@@ -1,4 +1,4 @@
-package com.example.board.global.config;
+package com.example.board.global.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
