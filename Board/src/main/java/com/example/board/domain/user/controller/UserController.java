@@ -1,4 +1,4 @@
-package com.example.board.domain.user.controller.dto;
+package com.example.board.domain.user.controller;
 
 import com.example.board.domain.user.controller.dto.request.SignUpRequest;
 import com.example.board.domain.user.service.UserSignUpService;
