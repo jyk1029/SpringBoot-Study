@@ -1,5 +1,6 @@
 package com.example.dise_v2.global.security.jwt
 
+import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
 import com.example.dise_v2.global.exception.ExpiredJwtExcpetion
 import com.example.dise_v2.global.exception.InternalServerErrorException
 import com.example.dise_v2.global.exception.InvalidJwtException
@@ -21,6 +22,12 @@ class JwtTokenProvider(
     private val jwtProperties: JwtProperties,
     private val authDetailsService: AuthDetailsService
 ) {
+    fun getToken(accountId: String): TokenResponse {
+        val accessToken: String = generateToken(accountId, jwtProperties.accessExp)
+//        val refreshToken: String = generateRefreshToken(email)
+
+        return TokenResponse(accessToken = accessToken)
+    }
     private fun generateToken(accountId: String, expiration: Long): String {
         return "Bearer " + Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtProperties.secretKey)
             .setSubject(accountId)
