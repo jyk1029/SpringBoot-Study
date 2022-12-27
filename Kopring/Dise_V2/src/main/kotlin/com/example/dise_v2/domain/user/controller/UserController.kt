@@ -1,6 +1,8 @@
 package com.example.dise_v2.domain.user.controller
 
+import com.example.dise_v2.domain.user.controller.dto.request.LogInRequset
 import com.example.dise_v2.domain.user.controller.dto.request.SignUpRequset
+import com.example.dise_v2.domain.user.service.LogInService
 import com.example.dise_v2.domain.user.service.SignUpService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
@@ -13,11 +15,17 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/user")
 @RestController
 class UserController(
-    private val signUpService: SignUpService
+    private val signUpService: SignUpService,
+    private val logInService: LogInService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     fun signUp(@RequestBody @Valid request: SignUpRequset) {
         signUpService.execute(request)
+    }
+
+    @PostMapping("/login")
+    fun LogIn(@RequestBody @Valid requset: LogInRequset) {
+        logInService.execute(requset)
     }
 }
