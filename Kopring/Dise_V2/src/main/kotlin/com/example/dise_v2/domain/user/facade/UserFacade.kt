@@ -15,7 +15,6 @@ class UserFacade(
         val accountId = SecurityContextHolder.getContext().authentication.name
         return userRepository.findByAccountId(accountId) ?: throw UserNotFoundException.EXCEPTION
     }
-
     fun checkUserExist(accountId: String): Boolean {
         return userRepository.existsByAccountId(accountId) ?: throw AlreadyUserExistException.EXCEPTION
     }
