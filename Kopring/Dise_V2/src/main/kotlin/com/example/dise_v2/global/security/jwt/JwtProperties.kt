@@ -6,5 +6,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 data class JwtProperties(
     var secret: String,
     val accessExp: Long
-) {
-}
+)

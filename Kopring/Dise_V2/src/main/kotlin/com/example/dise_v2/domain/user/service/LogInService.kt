@@ -14,10 +14,10 @@ class LogInService(
     private val passwordEncoder: PasswordEncoder,
     private val jwtTokenProvider: JwtTokenProvider
 ) {
-    fun execute(request: LogInRequset) : TokenResponse {
+    fun execute(request: LogInRequset): TokenResponse {
         val user = userFacade.getUserCurrentUser(request.accountId)
 
-        if(!passwordEncoder.matches(request.password, user.password)) {
+        if (!passwordEncoder.matches(request.password, user.password)) {
             throw PasswordMisMatshException.EXCEPTION
         }
         return jwtTokenProvider.getToken(request.accountId)

@@ -27,6 +27,7 @@ class JwtTokenProvider(
 
         return TokenResponse(accessToken = accessToken)
     }
+
     private fun generateToken(accountId: String, expiration: Long): String {
         return "Bearer " + Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
             .setSubject(accountId)
@@ -63,8 +64,8 @@ class JwtTokenProvider(
         return try {
             Jwts.parser().setSigningKey(jwtProperties.secret)
                 .parseClaimsJwt(token).body
-        } catch (e : Exception) {
-            when(e) {
+        } catch (e: Exception) {
+            when (e) {
                 is ExpiredJwtException -> throw ExpiredJwtExcpetion.EXCPETION
                 is InvalidClaimException -> throw InvalidJwtException.EXCEPTION
                 else -> throw InternalServerErrorException.EXCEPTION
