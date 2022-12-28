@@ -29,7 +29,7 @@ class JwtTokenProvider(
         return TokenResponse(accessToken = accessToken)
     }
     private fun generateToken(accountId: String, expiration: Long): String {
-        return "Bearer " + Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtProperties.secretKey)
+        return "Bearer " + Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
             .setSubject(accountId)
             .setHeaderParam("typ", "access")
             .setIssuedAt(Date())
@@ -62,7 +62,7 @@ class JwtTokenProvider(
 
     private fun getTokenBody(token: String?): Claims {
         return try {
-            Jwts.parser().setSigningKey(jwtProperties.secretKey)
+            Jwts.parser().setSigningKey(jwtProperties.secret)
                 .parseClaimsJwt(token).body
         } catch (e : Exception) {
             when(e) {
