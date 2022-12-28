@@ -2,6 +2,7 @@ package com.example.dise_v2.domain.user.controller
 
 import com.example.dise_v2.domain.user.controller.dto.request.LogInRequset
 import com.example.dise_v2.domain.user.controller.dto.request.SignUpRequset
+import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
 import com.example.dise_v2.domain.user.service.LogInService
 import com.example.dise_v2.domain.user.service.SignUpService
 import jakarta.validation.Valid
@@ -25,7 +26,7 @@ class UserController(
     }
 
     @PostMapping("/login")
-    fun LogIn(@RequestBody @Valid requset: LogInRequset) {
-        logInService.execute(requset)
+    fun LogIn(@RequestBody @Valid requset: LogInRequset): TokenResponse {
+        return logInService.execute(requset)
     }
 }
