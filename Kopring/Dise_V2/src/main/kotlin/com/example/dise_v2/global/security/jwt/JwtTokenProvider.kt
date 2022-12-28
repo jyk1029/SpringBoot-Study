@@ -24,7 +24,6 @@ class JwtTokenProvider(
 ) {
     fun getToken(accountId: String): TokenResponse {
         val accessToken: String = generateToken(accountId, jwtProperties.accessExp)
-//        val refreshToken: String = generateRefreshToken(email)
 
         return TokenResponse(accessToken = accessToken)
     }
@@ -49,14 +48,14 @@ class JwtTokenProvider(
         } else return null
     }
 
-    fun authorization(token: String?): UsernamePasswordAuthenticationToken? {
+    fun authorization(token: String): UsernamePasswordAuthenticationToken? {
         return token?.let {
             val userDetails: UserDetails = authDetailsService.loadUserByUsername(getTokenSubject(token))
             return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
         }
     }
 
-    private fun getTokenSubject(subject: String?): String? {
+    private fun getTokenSubject(subject: String): String {
         return getTokenBody(subject).subject
     }
 

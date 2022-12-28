@@ -35,6 +35,5 @@ class ExceptionFilter(
         response.status = errorResponse.status
         response.contentType = MediaType.APPLICATION_JSON_VALUE
         response.writer.write(objectMapper.writeValueAsString(errorResponse))
-        response.characterEncoding = StandardCharsets.UTF_8.toString()
     }
 }
