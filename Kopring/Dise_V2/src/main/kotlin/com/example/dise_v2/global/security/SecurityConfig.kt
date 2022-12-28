@@ -1,5 +1,6 @@
 package com.example.dise_v2.global.security
 
+import com.example.dise_v2.global.security.jwt.JwtTokenProvider
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.servlet.FilterChain
 import org.springframework.context.annotation.Bean
@@ -15,7 +16,8 @@ import java.lang.Exception
 @EnableWebSecurity
 @Configuration
 class SecurityConfig(
-    val objectMapper: ObjectMapper
+    private val objectMapper: ObjectMapper,
+    private val jwtTokenProvider: JwtTokenProvider
 ) {
     @Bean
     @Throws(Exception::class)
@@ -34,6 +36,7 @@ class SecurityConfig(
             .authorizeRequests()
             .requestMatchers("").permitAll()
             .anyRequest().permitAll()
+            .and().apply(FilterConfig(objectMapper, jwtTokenProvider))
             .and().build()
     }
 
