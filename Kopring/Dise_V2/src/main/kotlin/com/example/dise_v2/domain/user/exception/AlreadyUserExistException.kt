@@ -4,7 +4,7 @@ import com.example.dise_v2.global.error.CustomException
 import com.example.dise_v2.global.error.ErrorCode
 import com.example.dise_v2.global.error.ErrorResponse
 
-class AlreadyUserExistException() : CustomException(ErrorCode.ALREADY_USER_EXIST) {
+class AlreadyUserExistException : CustomException(ErrorCode.ALREADY_USER_EXIST) {
     companion object {
         @JvmField
         val EXCEPTION = AlreadyUserExistException()
