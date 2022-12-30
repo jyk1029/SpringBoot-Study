@@ -34,7 +34,7 @@ class SecurityConfig(
             .and()
 
             .authorizeRequests()
-            .requestMatchers("").permitAll()
+            .requestMatchers("/**").permitAll()
             .anyRequest().permitAll()
             .and().apply(FilterConfig(objectMapper, jwtTokenProvider))
             .and().build()
