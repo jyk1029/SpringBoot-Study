@@ -20,6 +20,6 @@ class LogInService(
         if (!passwordEncoder.matches(request.password, user.password)) {
             throw PasswordMisMatshException.EXCEPTION
         }
-        return jwtTokenProvider.getToken(request.accountId)
+        return jwtTokenProvider.getToken(user.accountId)
     }
 }
