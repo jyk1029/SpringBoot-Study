@@ -2,7 +2,6 @@ package com.example.dise_v2.global.security
 
 import com.example.dise_v2.global.security.jwt.JwtTokenProvider
 import com.fasterxml.jackson.databind.ObjectMapper
-import jakarta.servlet.FilterChain
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -21,8 +20,8 @@ class SecurityConfig(
 ) {
     @Bean
     @Throws(Exception::class)
-    fun filterchain(http: HttpSecurity): SecurityFilterChain {
-        return http
+    protected fun filterchain(http: HttpSecurity): SecurityFilterChain {
+        http
             .csrf().disable()
             .formLogin().disable()
             .cors()
@@ -37,7 +36,8 @@ class SecurityConfig(
             .requestMatchers("/**").permitAll()
             .anyRequest().permitAll()
             .and().apply(FilterConfig(objectMapper, jwtTokenProvider))
-            .and().build()
+
+        return http.build()
     }
 
     @Bean
