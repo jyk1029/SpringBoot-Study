@@ -14,6 +14,13 @@ spring:
   jackson:
     property-naming-strategy: SNAKE_CASE
 
+  jwt:
+    header: ${HEADER}
+    secret-key: ${SECRET}
+    access-exp: ${ACCESS}
+    refresh-exp: ${REFRESH}
+    prefix: ${PREFIX}
+
 redis:
   host: ${REDIS_HOST}
   port: ${REDIS_PORT}
