@@ -1,6 +1,8 @@
 package com.example.dise_v2.global.security.jwt
 
 import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
+import com.example.dise_v2.domain.user.domain.RefreshToken
+import com.example.dise_v2.domain.user.domain.repository.RefreshTokenRepository
 import com.example.dise_v2.global.exception.ExpiredJwtExcpetion
 import com.example.dise_v2.global.exception.InternalServerErrorException
 import com.example.dise_v2.global.exception.InvalidJwtException
@@ -20,12 +22,24 @@ import java.util.*
 @Component
 class JwtTokenProvider(
     private val jwtProperties: JwtProperties,
-    private val authDetailsService: AuthDetailsService
+    private val authDetailsService: AuthDetailsService,
+    private val refreshTokenRepository: RefreshTokenRepository
 ) {
     fun getToken(accountId: String): TokenResponse {
         val accessToken: String = generateToken(accountId, jwtProperties.accessExp)
 
         return TokenResponse(accessToken = accessToken)
+    }
+
+    fun generateRefreshToken(accountId: String): String {
+        val newRefreshToken: String = generateToken(accountId, jwtProperties.refreshExp)
+        refreshTokenRepository.save(
+            RefreshToken(
+                accountId = (accountId),
+                token = newRefreshToken
+            )
+        )
+        return newRefreshToken
     }
 
     private fun generateToken(accountId: String, expiration: Long): String {
@@ -46,7 +60,7 @@ class JwtTokenProvider(
     fun parseToken(bearerToken: String?): String? {
         return if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.replace("Bearer ", "")
-        } else return null
+        } else null
     }
 
     fun authorization(token: String): UsernamePasswordAuthenticationToken? {
