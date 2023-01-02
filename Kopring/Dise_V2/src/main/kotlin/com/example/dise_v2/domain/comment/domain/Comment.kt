@@ -1,7 +1,7 @@
 package com.example.dise_v2.domain.feed.domain
 
 import com.example.dise_v2.domain.user.domain.User
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 class Comment(

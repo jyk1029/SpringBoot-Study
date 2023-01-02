@@ -12,12 +12,12 @@ import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.InvalidClaimException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import jakarta.servlet.http.HttpServletRequest
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import java.lang.Exception
 import java.util.*
+import javax.servlet.http.HttpServletRequest
 
 @Component
 class JwtTokenProvider(
@@ -27,8 +27,9 @@ class JwtTokenProvider(
 ) {
     fun getToken(accountId: String): TokenResponse {
         val accessToken: String = generateToken(accountId, jwtProperties.accessExp)
+        val refreshToken: String = generateRefreshToken(accountId)
 
-        return TokenResponse(accessToken = accessToken)
+        return TokenResponse(accessToken = accessToken, refreshToken = refreshToken)
     }
 
     fun generateRefreshToken(accountId: String): String {
@@ -77,7 +78,7 @@ class JwtTokenProvider(
     private fun getTokenBody(token: String?): Claims {
         return try {
             Jwts.parser().setSigningKey(jwtProperties.secret)
-                .parseClaimsJwt(token).body
+                .parseClaimsJws(token).body
         } catch (e: Exception) {
             when (e) {
                 is ExpiredJwtException -> throw ExpiredJwtExcpetion.EXCPETION

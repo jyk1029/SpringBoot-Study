@@ -1,9 +1,9 @@
 package com.example.dise_v2.global.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDateTime
+import javax.persistence.Column
+import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
 abstract class BaseTimeEntity(

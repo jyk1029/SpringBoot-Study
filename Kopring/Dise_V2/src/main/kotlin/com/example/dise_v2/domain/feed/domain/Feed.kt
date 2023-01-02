@@ -3,9 +3,9 @@ package com.example.dise_v2.domain.feed.domain
 import com.example.dise_v2.domain.feed.domain.type.Category
 import com.example.dise_v2.domain.user.domain.User
 import com.example.dise_v2.global.entity.BaseTimeEntity
-import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
+import javax.persistence.*
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)

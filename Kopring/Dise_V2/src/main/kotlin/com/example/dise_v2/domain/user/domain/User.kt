@@ -1,12 +1,8 @@
 package com.example.dise_v2.domain.user.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import javax.persistence.*
 
-@Entity(name = "user")
+@Entity
 class User(
     id: Long?,
     accountId: String,

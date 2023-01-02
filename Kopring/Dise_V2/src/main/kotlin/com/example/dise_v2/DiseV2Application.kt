@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 @ConfigurationPropertiesScan
-@EnableConfigurationProperties(JwtProperties::class)
 @SpringBootApplication
 class DiseV2Application
 
