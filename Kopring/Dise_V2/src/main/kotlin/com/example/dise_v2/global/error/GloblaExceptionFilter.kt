@@ -1,5 +1,6 @@
 package com.example.dise_v2.global.error
 
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
@@ -10,7 +11,7 @@ class GloblaExceptionFilter {
     fun customException(e: CustomException): ResponseEntity<ErrorResponse> {
         return ResponseEntity(
             ErrorResponse.of(e),
-            HttpStatusCode.valueOf(e.status)
+            HttpStatus.valueOf(e.status)
         )
     }
 }
