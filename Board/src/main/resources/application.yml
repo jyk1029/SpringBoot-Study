@@ -15,11 +15,9 @@ spring:
     property-naming-strategy: SNAKE_CASE
 
   jwt:
-    header: ${HEADER}
-    secret-key: ${SECRET}
-    access-exp: ${ACCESS}
-    refresh-exp: ${REFRESH}
-    prefix: ${PREFIX}
+    secret-key: ${SECRET_KEY}
+    access-exp: ${ACCESS_EXP}
+    refresh-exp: ${REFRESH_EXP}
 
 redis:
   host: ${REDIS_HOST}
