@@ -4,6 +4,7 @@ import com.example.board.domain.user.controller.dto.request.SignUpRequest;
 import com.example.board.domain.user.domain.User;
 import com.example.board.domain.user.domain.repository.UserRepository;
 import com.example.board.domain.user.exception.UserAlreadyExitsException;
+import com.example.board.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,11 @@ public class UserSignUpService {
 
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
     @Transactional //클래스나 메서드에 붙여줄 경우, 해당 범위 내 메서드가 트랜잭션(Rollback)이 되도록 보장
     public void execute(SignUpRequest request) {
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) { //isPresent : 값 유무 체크
+        if (userFacade.checkUserExist(request.getAccountId())) { //Facade 패턴 적용
             throw UserAlreadyExitsException.EXCEPTION; //예외처리
         }
 
