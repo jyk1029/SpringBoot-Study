@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
-class GloblaExceptionFilter {
+class GloblaExceptionHandler {
     @ExceptionHandler(CustomException::class)
     fun customException(e: CustomException): ResponseEntity<ErrorResponse> {
         return ResponseEntity(
