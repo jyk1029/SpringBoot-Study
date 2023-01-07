@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 @Service
 public class UserSignUpService {
 
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder; //PasswordEncoder : 비밀번호를 암호화하는 역할(스프링 시큐리티의 인터페이스 객체)
     private final UserRepository userRepository;
     private final UserFacade userFacade;
 
@@ -27,7 +27,7 @@ public class UserSignUpService {
 
         User user = User.builder() //Builder Pattern(Design Pattern) : 복합 객체의 생성 과정과 표현 방법을 분리하여 동일한 생성 절차에서 서로 다른 표현 결과를 만들 수 있게 하는 패턴
                 .accountId(request.getAccountId())
-                .password(passwordEncoder.encode(request.getPassword())) //PasswordEncoder : 비밀번호를 암호화하는 역할(스프링 시큐리티의 인터페이스 객체)
+                .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
                 .name(request.getName())
                 .build();
