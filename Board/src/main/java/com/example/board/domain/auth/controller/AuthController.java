@@ -22,7 +22,7 @@ public class AuthController {
         return tokenService.execute(refreshToken);
     }
 
-    @PostMapping("/logIn")
+    @PostMapping("/login")
     public TokenResponse signIn(@RequestBody @Valid SignInRequest signInRequest) {
         return signInService.execute(signInRequest);
     }
