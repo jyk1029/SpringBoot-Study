@@ -20,7 +20,7 @@ public class RefreshToken {
     @Indexed
     private String refreshToken;
 
-    @TimeToLive
+    @TimeToLive //토큰 만료시간을 seconds 단위로 설정핫기  위한 어노테이션
     private Long timeToLive;
 
     @Builder
