@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor //
 public class SignUpRequest {
     @NotBlank(message = "계정 아이디는 Null, 공백, 띄어쓰기를 허용하지 않습니다.") //NotBlank(Null, "", " ") > NotEmpty(Null, "") > NuoNull(Null)
     @Size(min = 8, max = 16, message = "최소 8자 ~ 최대 16자까지 가능합니다.")
