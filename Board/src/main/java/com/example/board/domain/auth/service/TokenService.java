@@ -28,6 +28,7 @@ public class TokenService {
         redisRefreshToken.updateRefreshToken(newRefreshToken, jwtProperties.getRefreshExp());
 
         String accessToken = jwtTokenProvider.generateAccessToken(redisRefreshToken.getUserId());
+
         return TokenResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(newRefreshToken)
