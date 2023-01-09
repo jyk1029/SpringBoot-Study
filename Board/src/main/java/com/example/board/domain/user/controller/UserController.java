@@ -10,7 +10,7 @@ import javax.validation.Valid;
 
 @RequiredArgsConstructor //final이 붙거나 @NotNull이 붙은 필드의 생성자를 자동 생성해주는 롬복 어노테이션
 @RequestMapping("/user") //요청을 특정 메서드와 매핑하기 위해 사용, 공통적인 url 설정
-@RestController //ResponseBody + Controller
+@RestController //ResponseBody(json, xml과 같은 데이터를 return) + Controller(Controller의 역할을 한다고 명시하기 위해 사용하는 Annotation)
 public class UserController {
     private final UserSignUpService userSignUpService;
 

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RequiredArgsConstructor
-@Component
+@Component //생성한 Class를 Bean 등록할 때 사용
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;

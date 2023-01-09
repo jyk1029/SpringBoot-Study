@@ -14,14 +14,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @RequiredArgsConstructor
-@Configuration
-@EnableWebSecurity
+@Configuration //설정파일을 만들기 위한 애노테이션 or Bean을 등록하기 위한 애노테이션
+@EnableWebSecurity //스프링 시큐리티의 필터 연결을 설정하 위한 오버라이딩, SpringSecurityFilterChain이 자동 포함
 public class SecurityConfig {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final ObjectMapper objectMapper;
 
-    @Bean //Bean 직접 등록 방식
+    //스프링 2.7.0 부턴 WebSecurityConfigurererAdapter 상속 받지 않고 빈으로 직접 등록하는 것이 더 좋다
+    @Bean //Bean : Spring IoC(제어의 역전, Inversion Of Control) 컨테이너가 관리하는 자바 객체
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf().disable()
