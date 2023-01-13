@@ -17,7 +17,7 @@ import javax.validation.Valid
 @RestController
 class UserController(
     private val signUpService: SignUpService,
-    private val logInService: LoginService,
+    private val loginService: LogInService,
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -27,6 +27,6 @@ class UserController(
 
     @PostMapping("/login")
     fun login(@RequestBody @Valid requset: LogInRequset): TokenResponse {
-        return logInService.execute(requset)
+        return loginService.execute(requset)
     }
 }
