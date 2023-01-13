@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
 class UserFacade(
     private val userRepository: UserRepository
 ) {
-    fun getUserCurrentUser(accountId: String): User {
+    fun getCurrentUser(accountId: String): User {
         val accountId = SecurityContextHolder.getContext().authentication.name
         return getByAccountId(accountId)
     }
