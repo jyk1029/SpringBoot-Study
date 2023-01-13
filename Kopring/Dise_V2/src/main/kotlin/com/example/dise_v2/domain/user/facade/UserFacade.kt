@@ -13,6 +13,7 @@ class UserFacade(
 ) {
     fun getCurrentUser(accountId: String): User {
         val accountId = SecurityContextHolder.getContext().authentication.name
+
         return getByAccountId(accountId)
     }
 
