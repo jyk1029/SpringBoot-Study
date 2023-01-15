@@ -7,7 +7,9 @@ import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
 import com.example.dise_v2.domain.user.service.LogInService
 import com.example.dise_v2.domain.user.service.SignUpService
 import com.example.dise_v2.domain.user.service.UpdateUserInfoService
+import com.example.dise_v2.domain.user.service.WithdrawalService
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -21,7 +23,8 @@ import javax.validation.Valid
 class UserController(
     private val signUpService: SignUpService,
     private val loginService: LogInService,
-    private val updateUserInfoService: UpdateUserInfoService
+    private val updateUserInfoService: UpdateUserInfoService,
+    private val withdrawalService: WithdrawalService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -38,5 +41,11 @@ class UserController(
     @PutMapping
     fun updateUserInfo(@RequestBody @Valid request: UpdateUserInfoRequest) {
         updateUserInfoService.execute(request)
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping
+    fun withdrawalUser() {
+        withdrawalService.execute()
     }
 }
