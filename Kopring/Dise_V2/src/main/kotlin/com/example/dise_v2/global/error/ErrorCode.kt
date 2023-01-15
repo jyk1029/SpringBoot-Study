@@ -7,7 +7,7 @@ enum class ErrorCode(
     val message: String
 ) {
     EXPIRED_JWT(401, "만료된 토큰입니다."),
-    INVALID_JWT(401, "만료된 토큰입니다."),
+    INVALID_JWT(401, "유효하지 않은 토큰입니다."),
     PASSWORD_MISMATCH(401, "비밀번호가 불일치합니다."),
 
     USER_NOT_FOUND(404, "유저를 찾을 수 없습니다."),
