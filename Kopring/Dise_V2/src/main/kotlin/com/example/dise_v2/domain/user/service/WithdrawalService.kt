@@ -13,7 +13,7 @@ class WithdrawalService(
 ) {
     @Transactional
     fun execute() {
-        var user: User = userFacade.getCurrentUser()
+        val user: User = userFacade.getCurrentUser()
 
         userRepository.delete(user)
     }
