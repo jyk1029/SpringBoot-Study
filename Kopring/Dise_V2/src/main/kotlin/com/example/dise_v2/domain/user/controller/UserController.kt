@@ -4,12 +4,11 @@ import com.example.dise_v2.domain.user.controller.dto.request.LogInRequset
 import com.example.dise_v2.domain.user.controller.dto.request.SignUpRequset
 import com.example.dise_v2.domain.user.controller.dto.request.UpdateUserInfoRequest
 import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
-import com.example.dise_v2.domain.user.service.LogInService
-import com.example.dise_v2.domain.user.service.SignUpService
-import com.example.dise_v2.domain.user.service.UpdateUserInfoService
-import com.example.dise_v2.domain.user.service.WithdrawalService
+import com.example.dise_v2.domain.user.controller.dto.response.UserInfoResponse
+import com.example.dise_v2.domain.user.service.*
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -24,7 +23,8 @@ class UserController(
     private val signUpService: SignUpService,
     private val loginService: LogInService,
     private val updateUserInfoService: UpdateUserInfoService,
-    private val withdrawalService: WithdrawalService
+    private val withdrawalService: WithdrawalService,
+    private val queryUserInfoService: QueryUserInfoService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -47,5 +47,10 @@ class UserController(
     @DeleteMapping
     fun withdrawalUser() {
         withdrawalService.execute()
+    }
+
+    @GetMapping
+    fun queryUserInfo(): UserInfoResponse {
+        return queryUserInfoService.execute()
     }
 }
