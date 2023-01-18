@@ -18,7 +18,7 @@ class UserFacade(
     }
 
     fun checkUserExist(accountId: String): Boolean {
-        return userRepository.existsByAccountId(accountId) ?: throw AlreadyUserExistException.EXCEPTION
+        return userRepository.existsByAccountId(accountId)
     }
 
     fun getByAccountId(accountId: String): User {
