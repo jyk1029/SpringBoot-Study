@@ -28,4 +28,8 @@ class User(
     fun updateUserInfo(name: String) {
         this.name = name
     }
+
+    fun updatePassword(password: String) {
+        this.password = password
+    }
 }
