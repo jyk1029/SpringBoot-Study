@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class UserFacade(
-    private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder
+    private val userRepository: UserRepository
 ) {
     fun getCurrentUser(): User {
         val accountId: String = SecurityContextHolder.getContext().authentication.name
@@ -22,12 +21,6 @@ class UserFacade(
 
     fun checkUserExist(accountId: String): Boolean {
         return userRepository.existsByAccountId(accountId)
-    }
-
-    fun checkPassword(user: User, passsword: String) {
-        if (!passwordEncoder.matches(passsword, user.password)) {
-            throw PasswordMisMatshException.EXCEPTION
-        }
     }
 
     fun getByAccountId(accountId: String): User {

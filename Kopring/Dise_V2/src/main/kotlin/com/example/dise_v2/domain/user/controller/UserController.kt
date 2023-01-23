@@ -26,8 +26,7 @@ class UserController(
     private val loginService: LogInService,
     private val updateUserInfoService: UpdateUserInfoService,
     private val withdrawalService: WithdrawalService,
-    private val queryUserInfoService: QueryUserInfoService,
-    private val updatePasswordService: UpdatePasswordService
+    private val queryUserInfoService: QueryUserInfoService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -55,11 +54,5 @@ class UserController(
     @GetMapping
     fun queryUserInfo(): UserInfoResponse {
         return queryUserInfoService.execute()
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping
-    fun updatePassword(@RequestBody @Valid request: UpdatePasswordRequest) {
-        updatePasswordService.execute(request)
     }
 }

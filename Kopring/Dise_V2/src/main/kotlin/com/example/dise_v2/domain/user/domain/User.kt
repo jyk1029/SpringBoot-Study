@@ -4,14 +4,14 @@ import javax.persistence.*
 
 @Entity
 class User(
-    id: Long?,
+    id: Long,
     accountId: String,
     password: String,
     name: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = id
+    val id: Long = id
 
     @Column(length = 20, nullable = false, unique = true)
     var accountId: String = accountId
