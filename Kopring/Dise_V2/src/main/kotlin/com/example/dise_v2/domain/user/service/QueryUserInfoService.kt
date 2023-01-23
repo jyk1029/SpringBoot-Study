@@ -11,7 +11,7 @@ class QueryUserInfoService(
     private val userFacade: UserFacade
 ) {
     @Transactional(readOnly = true)
-    fun execute():UserInfoResponse {
+    fun execute(): UserInfoResponse {
         val user = userFacade.getCurrentUser()
 
         return UserInfoResponse(

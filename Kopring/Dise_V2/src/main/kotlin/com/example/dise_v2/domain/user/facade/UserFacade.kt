@@ -25,7 +25,7 @@ class UserFacade(
     }
 
     fun checkPassword(user: User, passsword: String) {
-        if(!passwordEncoder.matches(passsword, user.password)) {
+        if (!passwordEncoder.matches(passsword, user.password)) {
             throw PasswordMisMatshException.EXCEPTION
         }
     }
