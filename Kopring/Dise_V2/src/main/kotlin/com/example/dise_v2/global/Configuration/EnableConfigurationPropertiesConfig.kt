@@ -5,5 +5,4 @@ import org.springframework.context.annotation.Configuration
 
 @ConfigurationPropertiesScan
 @Configuration
-class EnableConfigurationPropertiesConfig {
-}
+class EnableConfigurationPropertiesConfig
