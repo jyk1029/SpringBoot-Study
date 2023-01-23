@@ -10,7 +10,7 @@ import javax.persistence.*
 @Entity
 @EntityListeners(AuditingEntityListener::class)
 class Feed(
-    id: Long?,
+    id: Long,
     title: String,
     content: String,
     category: Category,
@@ -22,7 +22,7 @@ class Feed(
 ) : BaseTimeEntity(createdAt) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = id
+    val id: Long = id
 
     @Column(length = 20, nullable = false)
     var title: String = title
