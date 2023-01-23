@@ -15,7 +15,6 @@ import javax.validation.Valid
 class FeedController(
     private val createFeedService: CreateFeedService
 ) {
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun createFeed(@RequestBody @Valid request: CreateFeedRequset) {

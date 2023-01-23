@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 data class CreateFeedRequset(
-
     @field:NotBlank(message = "title은 null, 공백, 띄어쓰기가 불가합니다.")
     @field:Size(max = 20, message = "title은 최대 20자까지 입니다.")
     var title: String,
