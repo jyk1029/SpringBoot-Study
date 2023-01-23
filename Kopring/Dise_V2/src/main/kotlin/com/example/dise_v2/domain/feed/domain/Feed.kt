@@ -36,4 +36,10 @@ class Feed(
     @Column(nullable = false)
     var category: Category = category
         protected set
+
+    fun modify(title: String, content: String, category: Category) {
+        this.title = title
+        this.content = content
+        this.category = category
+    }
 }
