@@ -26,4 +26,8 @@ class UserFacade(
     fun getByAccountId(accountId: String): User {
         return userRepository.findByAccountId(accountId) ?: throw UserNotFoundException.EXCEPTION
     }
+
+    fun getUserId(): Long {
+        return getCurrentUser().id
+    }
 }

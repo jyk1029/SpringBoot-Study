@@ -42,4 +42,12 @@ class Feed(
         this.content = content
         this.category = category
     }
+
+    fun userName(): String {
+        return user.name
+    }
+
+    fun userId(): Long {
+        return user.id
+    }
 }
