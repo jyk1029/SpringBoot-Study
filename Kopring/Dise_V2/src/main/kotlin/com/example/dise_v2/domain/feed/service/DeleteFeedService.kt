@@ -15,8 +15,8 @@ class DeleteFeedService(
 ) {
     @Transactional
     fun execute(feedId: Long) {
-        var user = userFacade.getCurrentUser()
-        var feed = feedFacade.getFeed(feedId)
+        val user = userFacade.getCurrentUser()
+        val feed = feedFacade.getFeed(feedId)
 
         if (!user.equals(feed.user)) {
             throw NotDeleteFeedException.EXCEPTION

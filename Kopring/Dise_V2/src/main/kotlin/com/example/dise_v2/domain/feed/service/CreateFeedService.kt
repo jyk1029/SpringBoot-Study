@@ -17,7 +17,7 @@ class CreateFeedService(
     @Transactional
     fun execute(request: CreateFeedRequset) {
 
-        var user = userFacade.getCurrentUser()
+        val user = userFacade.getCurrentUser()
 
         feedRepository.save(
             Feed(

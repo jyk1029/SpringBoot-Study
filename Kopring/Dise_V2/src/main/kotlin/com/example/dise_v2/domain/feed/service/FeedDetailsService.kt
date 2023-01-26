@@ -14,8 +14,8 @@ class FeedDetailsService(
 ) {
     @Transactional(readOnly = true)
     fun execute(feedId: Long): FeedDetailsResponse {
-        var feed = feedFacade.getFeed(feedId)
-        var userId = feed.userId()
+        val feed = feedFacade.getFeed(feedId)
+        val userId = feed.userId()
 
         return FeedDetailsResponse(
             feedId = feed.id,
