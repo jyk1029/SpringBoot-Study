@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class QueryFeedAllService(
-    private val feedRepository: FeedRepository,
-    private val feedFacade: FeedFacade
+    private val feedRepository: FeedRepository
 ) {
     @Transactional(readOnly = true)
     fun execute(): FeedListResponse {

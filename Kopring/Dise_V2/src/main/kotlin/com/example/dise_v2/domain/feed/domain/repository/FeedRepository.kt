@@ -1,6 +1,5 @@
 package com.example.dise_v2.domain.feed.domain.repository
 
-import com.example.dise_v2.domain.feed.controller.dto.response.FeedElement
 import com.example.dise_v2.domain.feed.domain.Feed
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
