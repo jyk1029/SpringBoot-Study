@@ -14,7 +14,6 @@ class QueryFeedAllService(
 ) {
     @Transactional(readOnly = true)
     fun execute(): FeedListResponse {
-        val feedList: List<Feed> = feedRepository.queryFeedList()
 
         return FeedListResponse(
             feedRepository.queryFeedList().map {
