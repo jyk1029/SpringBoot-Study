@@ -16,7 +16,7 @@ class QueryFeedAllService(
     fun execute(): FeedListResponse {
 
         return FeedListResponse(
-            feedRepository.queryFeedList().map {
+            feedRepository.findAllByOrderByIdDesc().map {
                 FeedElement(
                     feedId = it.id,
                     title = it.title,

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface FeedRepository : JpaRepository<Feed, Long> {
-    fun queryFeedList(): List<Feed>
+    fun findAllByOrderByIdDesc(): List<Feed>
 }
