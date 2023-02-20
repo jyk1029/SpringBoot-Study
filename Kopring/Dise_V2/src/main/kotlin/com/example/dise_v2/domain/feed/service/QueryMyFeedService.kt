@@ -14,7 +14,6 @@ class QueryMyFeedService(
     private val userFacade: UserFacade,
     private val feedRepository: FeedRepository
 ) {
-
     @Transactional(readOnly = true)
     fun execute(): FeedListResponse {
         val user: User = userFacade.getCurrentUser()
