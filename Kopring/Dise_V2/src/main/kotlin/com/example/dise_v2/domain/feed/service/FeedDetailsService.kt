@@ -29,7 +29,7 @@ class FeedDetailsService(
 
     private fun getIsMine(userId: Long?): Boolean {
         try {
-            return userFacade.getUserId().equals(userId)
+            return userFacade.getUserId()!!.equals(userId)
         } catch(e: UserNotFoundException) {
             return false
         }
