@@ -2,11 +2,8 @@ package com.example.dise_v2.domain.user.facade
 
 import com.example.dise_v2.domain.user.domain.User
 import com.example.dise_v2.domain.user.domain.repository.UserRepository
-import com.example.dise_v2.domain.user.exception.AlreadyUserExistException
-import com.example.dise_v2.domain.user.exception.PasswordMisMatshException
 import com.example.dise_v2.domain.user.exception.UserNotFoundException
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
@@ -27,7 +24,7 @@ class UserFacade(
         return userRepository.findByAccountId(accountId) ?: throw UserNotFoundException.EXCEPTION
     }
 
-    fun getUserId(): Long {
+    fun getUserId(): Long? {
         return getCurrentUser().id
     }
 }

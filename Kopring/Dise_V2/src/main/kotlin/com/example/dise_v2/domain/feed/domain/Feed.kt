@@ -47,7 +47,7 @@ class Feed(
         return user.name
     }
 
-    fun userId(): Long {
+    fun userId(): Long? {
         return user.id
     }
 }
