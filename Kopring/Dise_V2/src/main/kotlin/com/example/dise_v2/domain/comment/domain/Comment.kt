@@ -24,4 +24,8 @@ class Comment(
     @Column(length = 1000, nullable = false)
     var content: String = content
         protected set
+
+    fun modifyComment(content: String) {
+        this.content = content
+    }
 }

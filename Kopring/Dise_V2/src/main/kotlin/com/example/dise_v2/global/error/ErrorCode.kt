@@ -1,7 +1,5 @@
 package com.example.dise_v2.global.error
 
-import org.springframework.http.HttpStatus
-
 enum class ErrorCode(
     val status: Int,
     val message: String
@@ -11,9 +9,11 @@ enum class ErrorCode(
     PASSWORD_MISMATCH(401, "비밀번호가 불일치합니다."),
     NOT_MODIFY_FEED(401, "게시글을 수정할 수 없습니다."),
     NOT_DELETE_FEED(401, "게시글을 삭제할 수 없습니다."),
+    NOT_MODIFY_COMMENT(401, "댓글을 수정할 수 없습니다."),
 
     USER_NOT_FOUND(404, "유저를 찾을 수 없습니다."),
     FEED_NOT_FOUND(404, "게시물을 찾을 수 없습니다."),
+    COMMENT_NOT_FOUND(404, "댓글을 찾을 수 없습니다."),
 
     ALREADY_USER_EXIST(409, "이미 존재하는 유저입니다."),
 
