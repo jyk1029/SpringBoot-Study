@@ -63,7 +63,7 @@ class FeedController(
     }
 
     @GetMapping("/category/{category}")
-    fun categoryFeedList(@PathVariable("category")category: Category): FeedListResponse {
+    fun categoryFeedList(@PathVariable("category") category: Category): FeedListResponse {
         return categoryFeedListServcie.execute(category)
     }
 }
