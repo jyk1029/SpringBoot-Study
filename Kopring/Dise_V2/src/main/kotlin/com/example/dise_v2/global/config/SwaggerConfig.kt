@@ -12,7 +12,7 @@ class SwaggerConfig {
         return OpenAPI()
             .info(
                 Info().title("Dise.. API")
-                    .description("Dise Api 명세서입니다.")
+                    .description("Dise Api 명세서")
                     .version("v1")
             )
     }
