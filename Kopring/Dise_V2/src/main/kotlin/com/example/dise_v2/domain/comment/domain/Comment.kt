@@ -1,5 +1,6 @@
-package com.example.dise_v2.domain.feed.domain
+package com.example.dise_v2.domain.comment.domain
 
+import com.example.dise_v2.domain.feed.domain.Feed
 import com.example.dise_v2.domain.user.domain.User
 import javax.persistence.*
 
