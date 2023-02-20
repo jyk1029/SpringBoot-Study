@@ -26,6 +26,7 @@ class FeedController(
     private val deleteFeedService: DeleteFeedService,
     private val feedDetailsService: FeedDetailsService,
     private val queryFeedAllService: QueryFeedAllService,
+    private val queryMyFeedService: QueryMyFeedService,
     private val categoryFeedListServcie: CategoryFeedListServcie
 ) {
     @ResponseStatus(HttpStatus.CREATED)
@@ -54,6 +55,11 @@ class FeedController(
     @GetMapping("/list")
     fun feedList(): FeedListResponse {
         return queryFeedAllService.execute()
+    }
+
+    @GetMapping
+    fun myFeedList(): FeedListResponse {
+        return queryMyFeedService.execute()
     }
 
     @GetMapping("/category/{category}")
