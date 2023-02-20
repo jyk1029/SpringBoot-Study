@@ -2,7 +2,14 @@ package com.example.dise_v2.domain.comment.domain
 
 import com.example.dise_v2.domain.feed.domain.Feed
 import com.example.dise_v2.domain.user.domain.User
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.FetchType
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 
 @Entity
 class Comment(
@@ -27,5 +34,13 @@ class Comment(
 
     fun modifyComment(content: String) {
         this.content = content
+    }
+
+    fun getUserName(): String {
+        return user.name
+    }
+
+    fun getUserId(): Long? {
+        return user.id
     }
 }
