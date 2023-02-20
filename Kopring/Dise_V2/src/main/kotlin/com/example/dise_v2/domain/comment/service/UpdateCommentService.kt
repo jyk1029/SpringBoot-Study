@@ -19,7 +19,7 @@ class UpdateCommentService(
         val user: User = userFacade.getCurrentUser()
         val comment: Comment = commentFacade.getCommentById(commentId)
 
-        if(!user.equals(comment.id)) {
+        if(!user.equals(comment.user)) {
             throw NotModifyCommentException.EXCEPTION
         }
 
