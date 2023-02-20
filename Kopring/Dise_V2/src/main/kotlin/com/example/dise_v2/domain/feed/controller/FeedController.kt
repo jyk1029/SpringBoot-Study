@@ -27,7 +27,8 @@ class FeedController(
     private val feedDetailsService: FeedDetailsService,
     private val queryFeedAllService: QueryFeedAllService,
     private val queryMyFeedService: QueryMyFeedService,
-    private val categoryFeedListServcie: CategoryFeedListServcie
+    private val categoryFeedListServcie: CategoryFeedListServcie,
+    private val searchFeedService: SearchFeedService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -65,5 +66,10 @@ class FeedController(
     @GetMapping("/category/{category}")
     fun categoryFeedList(@PathVariable("category") category: Category): FeedListResponse {
         return categoryFeedListServcie.execute(category)
+    }
+
+    @GetMapping("/search/{keyword}")
+    fun searchFeed(@PathVariable("keyword") keyword: String): FeedListResponse {
+        return searchFeedService.execute(keyword)
     }
 }
