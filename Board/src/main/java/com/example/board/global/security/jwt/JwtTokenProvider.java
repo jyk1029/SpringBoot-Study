@@ -20,7 +20,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Component //생성한 Class를 Bean 등록할 때 사용
 public class JwtTokenProvider {
-
     private final JwtProperties jwtProperties;
     private final AuthDetailsService authDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;

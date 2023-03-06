@@ -17,7 +17,6 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 public class ExceptionFilter extends OncePerRequestFilter {
-
     private final ObjectMapper objectMapper;
 
     @Override

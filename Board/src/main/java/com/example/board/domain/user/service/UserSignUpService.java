@@ -14,7 +14,6 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 @Service
 public class UserSignUpService {
-
     private final PasswordEncoder passwordEncoder; //PasswordEncoder : 비밀번호를 암호화하는 역할(스프링 시큐리티의 인터페이스 객체)
     private final UserRepository userRepository;
     private final UserFacade userFacade;

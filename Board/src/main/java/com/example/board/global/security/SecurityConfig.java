@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration //설정파일을 만들기 위한 애노테이션 or Bean을 등록하기 위한 애노테이션
 @EnableWebSecurity //스프링 시큐리티의 필터 연결을 설정하 위한 오버라이딩, SpringSecurityFilterChain이 자동 포함
 public class SecurityConfig {
-
     private final JwtTokenProvider jwtTokenProvider;
     private final ObjectMapper objectMapper;
 
@@ -37,11 +36,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
 
-
                 .antMatchers("/user").permitAll()
-
                 .antMatchers("/feed").permitAll()
-
                 .antMatchers("/auth/token").permitAll()
 
                 .anyRequest().authenticated()

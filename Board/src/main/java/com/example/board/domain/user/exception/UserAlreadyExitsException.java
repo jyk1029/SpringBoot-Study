@@ -4,7 +4,6 @@ import com.example.board.global.error.exception.CustomException;
 import com.example.board.global.error.exception.ErrorCode;
 
 public class UserAlreadyExitsException extends CustomException {
-
     public static final CustomException EXCEPTION = //Singleton Pattern(Design Pattern) : 객체의 인스턴스가 오직 1개만 생성되는 패턴
             new UserAlreadyExitsException();
 

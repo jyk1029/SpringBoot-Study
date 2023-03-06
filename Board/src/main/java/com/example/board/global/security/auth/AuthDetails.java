@@ -11,7 +11,6 @@ import java.util.Collection;
 @Getter
 @RequiredArgsConstructor
 public class AuthDetails implements UserDetails{
-
     private final User user;
 
     @Override
