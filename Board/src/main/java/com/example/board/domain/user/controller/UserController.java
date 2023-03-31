@@ -2,9 +2,15 @@ package com.example.board.domain.user.controller;
 
 import com.example.board.domain.user.controller.dto.request.SignUpRequest;
 import com.example.board.domain.user.service.UserSignUpService;
+import com.example.board.domain.user.service.UserWithdrawalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -13,10 +19,17 @@ import javax.validation.Valid;
 @RestController //ResponseBody(json, xml과 같은 데이터를 return) + Controller(Controller의 역할을 한다고 명시하기 위해 사용하는 Annotation)
 public class UserController {
     private final UserSignUpService userSignUpService;
+    private final UserWithdrawalService userWithdrawalService;
 
     @ResponseStatus(HttpStatus.CREATED) //HTTP 상태코드 설정 : 201 CREATED
     @PostMapping("/signup") //Method 설정 어노테이션
     public void signUp(@RequestBody @Valid SignUpRequest request) { //@RequestBody : HttpRequest의 requestBody의 내용을 자바 객체로 매핑, @Valid : 유효성 검사
         userSignUpService.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping
+    public void withdrawal() {
+        userWithdrawalService.execute();
     }
 }
