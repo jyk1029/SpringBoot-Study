@@ -11,6 +11,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("*") //url 허용범위 : '*' 전체를 뜻함
                 .allowedMethods("*") //메소드 허용 범위
-                .allowedHeaders("*");
+                .allowedHeaders("*"); //Access-Control-Request-Headers 헤더를 통해 preflight 요청에 허용되는 헤더를 지정
     }
 }
