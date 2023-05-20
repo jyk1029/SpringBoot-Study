@@ -2,7 +2,6 @@ package com.example.dise_v2.domain.user.controller
 
 import com.example.dise_v2.domain.user.controller.dto.request.LogInRequset
 import com.example.dise_v2.domain.user.controller.dto.request.SignUpRequset
-import com.example.dise_v2.domain.user.controller.dto.request.UpdatePasswordRequest
 import com.example.dise_v2.domain.user.controller.dto.request.UpdateUserInfoRequest
 import com.example.dise_v2.domain.user.controller.dto.response.TokenResponse
 import com.example.dise_v2.domain.user.controller.dto.response.UserInfoResponse
@@ -10,7 +9,6 @@ import com.example.dise_v2.domain.user.service.*
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -35,8 +33,8 @@ class UserController(
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody @Valid requset: LogInRequset): TokenResponse {
-        return loginService.execute(requset)
+    fun login(@RequestBody @Valid request: LogInRequset): TokenResponse {
+        return loginService.execute(request)
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
